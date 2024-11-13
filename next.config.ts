@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  distDir: "dist",
   eslint: {
     // disable linting during build phase
     ignoreDuringBuilds: true,
