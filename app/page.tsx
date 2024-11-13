@@ -1,6 +1,6 @@
 "use client";
 
-import { Connector, useConnect, useConnectors } from "wagmi";
+import { Connector, useAccount, useConnect, useConnectors } from "wagmi";
 
 function findMetaMaskConnector(connectors: readonly Connector[]) {
   return connectors.find((c) => c.id === "io.metamask" || c.id === "io.metamask.mobile");
@@ -34,6 +34,7 @@ function jumpToMetaMaskApp() {
 }
 
 export default function Home() {
+  const { connector: activeConnector } = useAccount();
   const { connectAsync } = useConnect();
   const connectors = useConnectors();
 
@@ -57,9 +58,9 @@ export default function Home() {
 
   return (
     <div>
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-lg">
         <div className="space-y-4">
-          <div className="border border-purple-200 p-2 space-x-2">
+          <div className="p-2 flex flex-col gap-2">
             <button
               className="h-10 px-4 rounded bg-[#F5841F]"
               onClick={async () => {
@@ -87,18 +88,18 @@ export default function Home() {
             >
               connect okx direct
             </button>
-          </div>
 
-          <div className="border border-pink-300 p-2 space-x-2">
+            <div className="border-t border-t-neutral-200 my-4"></div>
+
             <button className="h-10 px-4 rounded bg-[#F5841F]" onClick={jumpToMetaMaskApp}>
               open link in metamask app
             </button>
             <button className="h-10 px-4 rounded bg-black text-white" onClick={jumpToOkxApp}>
               open link in okx app
             </button>
-          </div>
 
-          <div className="border border-[#F5841F] p-2 space-x-2">
+            <div className="border-t border-t-neutral-200 my-4"></div>
+
             <button
               className="h-10 px-4 rounded bg-[#F5841F]"
               onClick={async () => {
@@ -110,7 +111,7 @@ export default function Home() {
                 await connectAsync({ connector });
               }}
             >
-              connect metamask or open link in metamask app
+              connect metamask or open link in metamask
             </button>
 
             <button
@@ -124,17 +125,30 @@ export default function Home() {
                 await connectAsync({ connector });
               }}
             >
-              connect okx or open link in okx app
+              connect okx or open link in okx
             </button>
           </div>
 
-          <div className="border border-purple-300 p-2">
-            {connectors.map((connector) => (
-              <div key={connector.id}>
-                {connector.id}: {connector.name}
-              </div>
-            ))}
-          </div>
+          <div className="border-t border-t-neutral-200 my-4"></div>
+
+          <table className="border-collapse table-auto w-full text-sm">
+            <thead>
+              <tr>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">id</th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">name</th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">connected</th>
+              </tr>
+            </thead>
+            <tbody>
+              {connectors.map((connector) => (
+                <tr key={connector.id}>
+                  <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{connector.id}</td>
+                  <td className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.name}</td>
+                  <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.id === activeConnector?.id ? "✅" : "🚫"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
