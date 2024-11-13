@@ -59,23 +59,73 @@ export default function Home() {
     <div>
       <div className="mx-auto max-w-3xl">
         <div className="space-y-4">
-          <div className="border border-purple-300 p-2">
-            <button className="h-10 px-2 rounded bg-[#F5841F]" onClick={connectMetamask}>
-              connect metamask
+          <div className="border border-purple-200 p-2 space-x-2">
+            <button
+              className="h-10 px-4 rounded bg-[#F5841F]"
+              onClick={async () => {
+                const connector = findMetaMaskConnector(connectors);
+                if (!connector) {
+                  alert("no metamask connector");
+                  return;
+                }
+                await connectAsync({ connector });
+              }}
+            >
+              connect metamask direct
             </button>
-          </div>
-          <div className="border border-purple-300 p-2">
-            <button className="h-10 px-2 rounded bg-black text-white" onClick={connectOkx}>
-              connect okx
+
+            <button
+              className="h-10 px-4 rounded bg-black text-white"
+              onClick={async () => {
+                const connector = findOkxConnector(connectors);
+                if (!connector) {
+                  alert("no okx connector");
+                  return;
+                }
+                await connectAsync({ connector });
+              }}
+            >
+              connect okx direct
             </button>
           </div>
 
-          <div className="border border-purple-300 p-2">
-            <button onClick={jumpToMetaMaskApp}>open link in metamask app</button>
+          <div className="border border-pink-300 p-2 space-x-2">
+            <button className="h-10 px-4 rounded bg-[#F5841F]" onClick={jumpToMetaMaskApp}>
+              open link in metamask app
+            </button>
+            <button className="h-10 px-4 rounded bg-black text-white" onClick={jumpToOkxApp}>
+              open link in okx app
+            </button>
           </div>
 
-          <div className="border border-purple-300 p-2">
-            <button onClick={jumpToOkxApp}>open link in okx app</button>
+          <div className="border border-[#F5841F] p-2 space-x-2">
+            <button
+              className="h-10 px-4 rounded bg-[#F5841F]"
+              onClick={async () => {
+                const connector = findMetaMaskConnector(connectors);
+                if (!connector) {
+                  jumpToMetaMaskApp();
+                  return;
+                }
+                await connectAsync({ connector });
+              }}
+            >
+              connect metamask or open link in metamask app
+            </button>
+
+            <button
+              className="h-10 px-4 rounded bg-black text-white"
+              onClick={async () => {
+                const connector = findOkxConnector(connectors);
+                if (!connector) {
+                  jumpToOkxApp();
+                  return;
+                }
+                await connectAsync({ connector });
+              }}
+            >
+              connect okx or open link in okx app
+            </button>
           </div>
 
           <div className="border border-purple-300 p-2">
