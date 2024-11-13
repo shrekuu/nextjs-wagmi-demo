@@ -35,9 +35,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-          version: '9.12.3'
+      # - name: Setup pnpm
+      #   uses: pnpm/action-setup@v4.0.0
       - name: Install dependencies
         run: pnpm i
       - name: Build with Next.js
