@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  distDir: "dist",
+  images: {
+    unoptimized: true, // Disable default image optimization
+  },
   eslint: {
     // disable linting during build phase
     ignoreDuringBuilds: true,

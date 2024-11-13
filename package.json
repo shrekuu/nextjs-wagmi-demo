@@ -2,6 +2,7 @@
   "name": "nextjs-wagmi-demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shrekuu.github.io/nextjs-wagmi-demo",
   "scripts": {
     "dev": "next dev --turbopack",
     "dev2": "next dev",
