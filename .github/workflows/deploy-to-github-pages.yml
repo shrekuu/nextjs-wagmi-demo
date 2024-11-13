@@ -36,8 +36,11 @@ jobs:
         with:
           node-version: "22"
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-      - name: Install dependencies
+        # Version of pnpm to install
+        version: '9.x'
+        # Where to store pnpm files
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install dependencies
         run: pnpm i
       - name: Build with Next.js
         run: pnpm build
