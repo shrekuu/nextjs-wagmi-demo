@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev2": "next dev",
-    "build": "next build && cp -R public .next/standalone && cp -R .next/static .next/standalone/.next",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

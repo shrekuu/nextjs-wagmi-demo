@@ -127,28 +127,35 @@ export default function Home() {
             >
               connect okx or open link in okx
             </button>
-          </div>
 
-          <div className="border-t border-t-neutral-200 my-4"></div>
+            <div className="border-t border-t-neutral-200 my-4"></div>
 
-          <table className="border-collapse table-auto w-full text-sm">
-            <thead>
-              <tr>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">id</th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">name</th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">connected</th>
-              </tr>
-            </thead>
-            <tbody>
-              {connectors.map((connector) => (
-                <tr key={connector.id}>
-                  <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{connector.id}</td>
-                  <td className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.name}</td>
-                  <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.id === activeConnector?.id ? "✅" : "🚫"}</td>
+            <div>
+              <h1 className="font-bold">navigator.userAgent</h1>
+              <div className="py-1 text-sm">{navigator.userAgent}</div>
+            </div>
+
+            <div className="border-t border-t-neutral-200 my-4"></div>
+
+            <table className="border-collapse table-auto w-full text-sm">
+              <thead>
+                <tr>
+                  <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">id</th>
+                  <th className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">name</th>
+                  <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">connected</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {connectors.map((connector) => (
+                  <tr key={connector.id}>
+                    <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{connector.id}</td>
+                    <td className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.name}</td>
+                    <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.id === activeConnector?.id ? "✅" : "🚫"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
