@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Connector, useAccount, useConnect, useConnectors } from "wagmi";
 
 function findMetaMaskConnector(connectors: readonly Connector[]) {
@@ -55,6 +56,11 @@ export default function Home() {
     }
     await connectAsync({ connector });
   };
+
+  const [userAgentStr, setUserAgentStr] = useState("");
+  useEffect(() => {
+    setUserAgentStr(navigator.userAgent);
+  }, []);
 
   return (
     <div>
@@ -132,7 +138,7 @@ export default function Home() {
 
             <div>
               <h1 className="font-bold">navigator.userAgent</h1>
-              <div className="py-1 text-sm">{navigator.userAgent}</div>
+              <div className="py-1 text-sm">{userAgentStr}</div>
             </div>
 
             <div className="border-t border-t-neutral-200 my-4"></div>

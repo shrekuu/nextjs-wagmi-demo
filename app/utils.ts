@@ -5,4 +5,7 @@ const utils = {
     const isAndroid = /android|XiaoMi|MiuiBrowser/i.test(ua);
     return isIOS || isAndroid;
   },
+  isSSR() {
+    return typeof window === "undefined";
+  },
 };
