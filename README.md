@@ -6,4 +6,4 @@
 
 ## Screenshot
 
-![screenshot](./screenshot.png)
+<img src="./screenshot.png" width="512px" />
