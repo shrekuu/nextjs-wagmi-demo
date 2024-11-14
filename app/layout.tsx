@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
+import GitHubRibbon from "./_components/GitHubRibbon";
 
 export const metadata: Metadata = {
   title: "MetaMask & OKX Wallet Test",
@@ -16,6 +17,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Providers>{children}</Providers>
+        <GitHubRibbon />
       </body>
     </html>
   );

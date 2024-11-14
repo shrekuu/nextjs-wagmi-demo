@@ -146,17 +146,17 @@ export default function Home() {
             <table className="border-collapse table-auto w-full text-sm">
               <thead>
                 <tr>
-                  <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">id</th>
-                  <th className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">name</th>
-                  <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">connected</th>
+                  <th className="border-b dark:border-slate-600 font-medium p-2 text-slate-400 dark:text-slate-200 text-left">id</th>
+                  <th className="border-b dark:border-slate-600 font-medium p-2 text-slate-400 dark:text-slate-200 text-left">name</th>
+                  <th className="border-b dark:border-slate-600 font-medium p-2 text-slate-400 dark:text-slate-200 text-left">connected</th>
                 </tr>
               </thead>
               <tbody>
                 {connectors.map((connector) => (
                   <tr key={connector.id}>
-                    <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{connector.id}</td>
-                    <td className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.name}</td>
-                    <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{connector.id === activeConnector?.id ? "✅" : "🚫"}</td>
+                    <td className="border-b border-slate-100 dark:border-slate-700 p-2 text-slate-500 dark:text-slate-400">{connector.id}</td>
+                    <td className="border-b dark:border-slate-600 font-medium p-2 text-slate-400 dark:text-slate-200 text-left">{connector.name}</td>
+                    <td className="border-b dark:border-slate-600 font-medium p-2 text-slate-400 dark:text-slate-200 text-left">{connector.id === activeConnector?.id ? "✅" : "🚫"}</td>
                   </tr>
                 ))}
               </tbody>
